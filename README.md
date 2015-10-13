@@ -13,7 +13,74 @@ JNA(Java Native Access)框架是一个开源的Java框架，是建立在经典�
 具体实现如下：<br>
 分别用JNI和JNA的方式建立so，so中包含一个get方法和一个set方法，在java端进行循环调用N*N次，比较所耗费的时间。<br>
 
+## Key Code
+'JNI'实现(分为C和Java代码)
+```C
+// C Code
+#include <jni.h>
 
+int tmp = 0;
+JNIEXPORT void JNICALL Java_com_yawnlon_jnitest_JNIUtil_set(JNIEnv *env,
+		jobject thiz, jint value) {
+	tmp = value;
+}
+JNIEXPORT jint JNICALL Java_com_yawnlon_jnitest_JNIUtil_get(JNIEnv *env,
+		jobject thiz) {
+	return tmp;
+}
+```
+```Java
+// Java Interface
+public class JNIUtil {
+	public native static void set(int i);
+	public native static int get();
+	static {
+		System.loadLibrary("JNITest");
+	}
+}
+```
+```Java
+// Test
+for (int i = 0; i < n; i++) {
+	for (int j = 0; j < n; j++) {
+		JNIUtil.set(i + j);
+	  JNIUtil.get();
+	}
+}
+```
+
+'JNA'实现(分为C和Java)
+```C
+// C Code
+int tmp = 0;
+void set(int i) {
+	tmp = i;
+}
+int get() {
+	return tmp;
+}
+```
+```Java
+// Java Interface
+public interface JNAInterface extends Library {
+	JNAInterface INSTANCE = (JNAInterface) Native.loadLibrary(
+			"JNATest", JNAInterface.class);
+	public void set(int i);
+	public int get();
+}
+```
+```Java
+// Test
+for (int i = 0; i < n; i++) {
+  for (int j = 0; j < n; j++) {
+		JNAUtil.set(i + j);
+		JNAUtil.get();
+	}
+}
+```
+
+## Test
+在'OPPO N5207'机型上进行了测试，结果如下
 
 
 
