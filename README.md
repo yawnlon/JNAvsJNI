@@ -80,7 +80,7 @@ for (int i = 0; i < n; i++) {
 ```
 
 ## Test
-在'OPPO N5207'机型上进行了测试，结果如下
+在'OPPO N5207'机型上进行了测试，结果如下。由此可初步得出结论，'JNA'在性能上完全不如'JNI'
 ![](https://github.com/yawnlon/JNAvsJNI/blob/master/result/result.PNG)
 
 
