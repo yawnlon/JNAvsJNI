@@ -14,7 +14,7 @@ JNA(Java Native Access)框架是一个开源的Java框架，是建立在经典�
 分别用JNI和JNA的方式建立so，so中包含一个get方法和一个set方法，在java端进行循环调用N*N次，比较所耗费的时间。<br>
 
 ## Key Code
-'JNI'实现(分为C和Java代码)
+`JNI`实现(分为C和Java代码)
 ```C
 // C Code
 #include <jni.h>
@@ -49,7 +49,7 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
-'JNA'实现(分为C和Java)
+`JNA`实现(分为C和Java)
 ```C
 // C Code
 int tmp = 0;
@@ -80,7 +80,7 @@ for (int i = 0; i < n; i++) {
 ```
 
 ## Test
-在'OPPO N5207'机型上进行了测试，结果如下。由此可初步得出结论，'JNA'在性能上完全不如'JNI'
+在`OPPO N5207`机型上进行了测试，结果如下。由此可初步得出结论，`JNA`在性能上完全不如`JNI`
 ![](https://github.com/yawnlon/JNAvsJNI/blob/master/result/result.PNG)
 
 
