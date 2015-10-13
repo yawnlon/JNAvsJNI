@@ -81,6 +81,6 @@ for (int i = 0; i < n; i++) {
 
 ## Test
 在'OPPO N5207'机型上进行了测试，结果如下
-
+![](https://github.com/yawnlon/JNAvsJNI/blob/master/result/result.PNG)
 
 
